@@ -1,0 +1,220 @@
+/*
+ * Dit is de custom style sheet van jouw website
+ *
+ */
+
+body {
+	
+	font-family: 'Droid Sans', sans-serif;
+	background-image: url(http://vea.hosts.ma-cloud.nl/img/cloth_alike.png);
+	background-repeat: initial initial;
+}
+
+a {
+	
+	text-decoration: none;
+}
+
+.aligncenter, div.aligncenter {
+
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alignleft {
+
+	float: left;
+}
+
+.alignright {
+
+	float: right;
+}
+
+#wrapper {
+	
+	margin:0 auto;
+	width:860px;
+}
+	
+header, footer {
+
+	float:left;
+	padding:15px 0;
+	min-width:100%;
+}
+	
+header {
+		
+	background:#666;
+	color: #eee;
+}
+	
+header .logo {
+	
+	float:left;
+	width:400px;
+	font-family: 'Black Ops One', cursive;
+	font-size: 48px;
+	text-shadow: 4px 4px 4px #222;
+}
+	
+header p {
+	
+	float:right;
+	width:400px;
+	margin-top: 25px;
+}
+	
+content {
+
+	padding:15px 0;
+	clear:both;
+}
+	
+footer {
+	
+	background:#333;
+	color: #eee;
+	text-align:center;
+	height: 100%;
+	/*Vastzetten aan de bodem:*/
+	/*position:fixed;
+	bottom:0;*/
+}
+	
+footer a, header a {
+
+	color:#f20feb;
+}
+
+nav {
+	
+	clear: both;
+	width:860px;
+	height: 20px;
+}
+
+nav ul {
+	
+	padding-left: 20px;
+}
+
+
+nav li {
+	
+	display: inline;
+	padding-right: 15px;
+	display: block;
+	float: left;
+	text-transform: uppercase;
+	font-family: 'Black Ops One', cursive;
+	font-size: 15px;
+
+}
+
+nav ul li a {
+	
+	/*padding-right: 15px;*/
+}
+
+nav a {
+		color: #0d0f0e;
+}
+
+#songnav {
+
+    background-color:#eeeeee;
+ 	float:left;
+    padding:5px;	
+    width:620px;  
+	}
+	
+/*nav for songlist on song page */
+ul.songlist {
+	margin-left: -25px;
+	
+}
+
+
+ul.songlist li {
+
+	display: inline;
+	padding:	5px;
+	float: left;
+	width: 180px;
+	font-size: 0.8em;
+}
+
+ul.songlist li.middle {
+	 
+	   font-size: 1.1em;
+	   margin: 7px;
+	 
+	}
+
+
+
+nav ul li a {
+	
+	/*padding-right: 15px;*/
+}
+
+nav a {
+		color: #0d0f0e;
+}
+
+
+
+#video-container { 
+	top:0%; 
+	left:0%; 
+	height:150px; 
+	width:300px; 
+	overflow: hidden; 
+	float: left; 
+	padding-right: 15px;
+	padding-top: 20px;
+	clear: left;s
+}
+
+video { 
+	position:absolute; 
+	z-index:0; 
+}
+
+#right-sidebar {
+   float: right;
+   width: 230px;
+   min-height: 300px;
+   background-color: #ACACAC;
+}
+ 
+ 
+#widget_1,#widget_2,#widget_3,#widget_4,#widget_5 {
+	padding-bottom: 10px;
+
+}
+
+.bn {
+	float: left;
+	padding-right: 15px;
+	}
+	
+.order_nr {
+	background-color: red;
+	float: left;
+	padding-right: 9px;
+	padding-left: 6px;
+	color: white;
+	margin-right: 5px;
+}
+
+
+p {
+	margin: 0;
+}
+
+.clear  {
+	clear: both;
+	}

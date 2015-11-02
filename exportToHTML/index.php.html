@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>index.php</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { }
+.s2 { color: rgb(102,0,0); }
+.s3 { color: rgb(0,128,0); font-weight: bold; }
+.s4 { color: rgb(128,128,128); font-style: italic; }
+.s5 { color: rgb(0,0,0); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+index.php</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">&lt;?php</span><span class="s1"> 
+</span><span class="s2">$action </span><span class="s1">= </span><span class="s3">&quot;&quot;</span><span class="s1">; 
+</span><span class="s4">// Gebruikersnaam, wachtwoord van de database etc ophalen</span><span class="s1"> 
+</span><span class="s0">include</span><span class="s1">(</span><span class="s3">'includes/config.inc.php'</span><span class="s1">); 
+</span><span class="s4">// Laad de Smarty bibliotheek in</span><span class="s1"> 
+</span><span class="s0">include</span><span class="s1">(</span><span class="s3">'libs/Smarty.class.php'</span><span class="s1">); 
+</span><span class="s4">// Voer instellingen uit en stel template parser in</span><span class="s1"> 
+</span><span class="s0">include</span><span class="s1">(</span><span class="s3">'includes/bootstrap.inc.php'</span><span class="s1">); 
+</span><span class="s4">// Maak de database connectie</span><span class="s1"> 
+</span><span class="s0">include</span><span class="s1">(</span><span class="s3">'includes/database.inc.php'</span><span class="s1">); 
+ 
+</span><span class="s4">// Zet dagen klaar voor menu</span><span class="s1"> 
+</span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/build_day_lists.php'</span><span class="s1">); 
+</span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'day_list_available' </span><span class="s1">, </span><span class="s2">$day_list_available</span><span class="s1">); 
+</span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'day_list_greyedout' </span><span class="s1">, </span><span class="s2">$day_list_greyedout</span><span class="s1">); 
+ 
+</span><span class="s4">// Koppel de waarde van de paginatitel aan te smarty tag 'title'</span><span class="s1"> 
+</span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'title'</span><span class="s1">, </span><span class="s5">WEBSITE_TITLE</span><span class="s1">); 
+</span><span class="s4">// Toon de template: output html</span><span class="s1"> 
+</span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'head.tpl'</span><span class="s1">); 
+</span><span class="s4">// Header en navigatie</span><span class="s1"> 
+</span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'header.tpl'</span><span class="s1">); 
+ 
+ 
+ 
+</span><span class="s0">switch </span><span class="s1">(</span><span class="s2">$action</span><span class="s1">) { 
+ 
+    </span><span class="s0">case </span><span class="s3">'search'</span><span class="s1">: 
+        </span><span class="s4">// toon hier het zoekresultaat</span><span class="s1"> 
+        </span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/get_searchresult.php'</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'search' </span><span class="s1">, </span><span class="s2">$searchString</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'searchList' </span><span class="s1">, </span><span class="s2">$itemList</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'searchresult.tpl'</span><span class="s1">); 
+        </span><span class="s0">break</span><span class="s1">; 
+        </span><span class="s4">/* 
+         case 'tourdates': 
+         // Maak dit af! 
+         // Haal de tourdata op 
+         include('logic/select_tourdates.php'); 
+         $templateParser-&gt;assign('x' , $x); 
+         $templateParser-&gt;display('x.tpl'); 
+         break; 
+         */</span><span class="s1"> 
+    </span><span class="s0">case </span><span class="s3">'getsongs'</span><span class="s1">: 
+        </span><span class="s4">// Haal de songs op</span><span class="s1"> 
+        </span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/select_songs.php'</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'song_list' </span><span class="s1">, </span><span class="s2">$song_list</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'songs.tpl'</span><span class="s1">); 
+        </span><span class="s0">break</span><span class="s1">; 
+    </span><span class="s0">case </span><span class="s3">'view_song'</span><span class="s1">: 
+        </span><span class="s4">// Haal een song op, en de twee eromheen</span><span class="s1"> 
+        </span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/select_song.php'</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'song' </span><span class="s1">, </span><span class="s2">$currentsong</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'song3_list' </span><span class="s1">, </span><span class="s2">$song3_list</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'song.tpl'</span><span class="s1">); 
+        </span><span class="s0">break</span><span class="s1">; 
+    </span><span class="s0">case </span><span class="s3">'top100'</span><span class="s1">: 
+        </span><span class="s4">// Haal alle songs op</span><span class="s1"> 
+        </span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/select_songs.php'</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'song_list' </span><span class="s1">, </span><span class="s2">$song_list</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'top100.tpl'</span><span class="s1">); 
+        </span><span class="s0">break</span><span class="s1">; 
+    </span><span class="s0">case </span><span class="s3">'prijsvraag'</span><span class="s1">: 
+        </span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/select_quiz.php'</span><span class="s1">); 
+        </span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/select_song.php'</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'quiz' </span><span class="s1">, </span><span class="s2">$quiz</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'quiz_song' </span><span class="s1">, </span><span class="s2">$quiz_song</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'prijsvraag.tpl'</span><span class="s1">); 
+        </span><span class="s0">break</span><span class="s1">; 
+    </span><span class="s0">case </span><span class="s3">'bn'</span><span class="s1">: 
+        </span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/select_bn.php'</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'bn_list' </span><span class="s1">, </span><span class="s2">$bn_list</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'bn.tpl'</span><span class="s1">); 
+        </span><span class="s0">break</span><span class="s1">; 
+    </span><span class="s0">case </span><span class="s3">'test'</span><span class="s1">: 
+        </span><span class="s4">// toon hier het zoekresultaat</span><span class="s1"> 
+        </span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/get_searchresult.php'</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'search' </span><span class="s1">, </span><span class="s2">$searchString</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'searchList' </span><span class="s1">, </span><span class="s2">$itemList</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'searchresult.tpl'</span><span class="s1">); 
+        </span><span class="s0">break</span><span class="s1">; 
+    </span><span class="s0">default</span><span class="s1">: 
+        </span><span class="s0">include</span><span class="s1">(</span><span class="s3">'logic/select_songs.php'</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">assign</span><span class="s1">(</span><span class="s3">'song_list' </span><span class="s1">, </span><span class="s2">$song_list</span><span class="s1">); 
+        </span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'songs.tpl'</span><span class="s1">); 
+ 
+} 
+ 
+ 
+ 
+ 
+</span><span class="s2">$templateParser</span><span class="s1">-&gt;</span><span class="s5">display</span><span class="s1">(</span><span class="s3">'footer.tpl'</span><span class="s1">); 
+ 
+ 
+ 
+ 
+</span></pre>
+</body>
+</html>
